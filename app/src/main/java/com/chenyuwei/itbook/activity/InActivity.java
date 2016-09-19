@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.chenyuwei.basematerial.activity.BaseActivity;
@@ -31,6 +32,10 @@ public class InActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(preferences.getInt("id",-1) != -1){
+            startActivity(MainActivity.class);
+            finish();
+        }
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager= (ViewPager) findViewById(R.id.viewPager);
         layoutHeader = findViewById(R.id.layoutHeader);

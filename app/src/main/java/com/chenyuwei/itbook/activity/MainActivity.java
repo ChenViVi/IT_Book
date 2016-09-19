@@ -8,7 +8,7 @@ import com.chenyuwei.basematerial.fragment.BaseDrawerFragment;
 import com.chenyuwei.basematerial.network.RequestMaker;
 import com.chenyuwei.itbook.R;
 import com.chenyuwei.itbook.fragment.CategoryFragment;
-import com.chenyuwei.itbook.fragment.RecommandFragment;
+import com.chenyuwei.itbook.fragment.RecommendFragment;
 import com.chenyuwei.itbook.modle.Category;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -31,7 +31,7 @@ public class MainActivity extends BaseTabTopActivity {
 
         drawerFragment = (BaseDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
-        addFragment(new RecommandFragment(),"推荐");
+        addFragment(new RecommendFragment(),"推荐");
         new RequestMaker(activity, RequestMaker.Method.GET, "query_category") {
             @Override
             protected void onSuccess(String response) {

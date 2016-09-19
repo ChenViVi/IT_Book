@@ -88,7 +88,7 @@ public abstract class RequestMaker {
                 }
                 finally {
                     if (tag != null){
-                        Log.e("response",tag + "=>"+ "url=" + url);
+                        Log.e("response",tag + "=>"+ "url=" + baseUrl + url);
                         Log.e("response",tag + "=>"+ "response=" + s);
                         Log.e("response",tag + "=>"+ "status=" + status);
                         Log.e("response",tag + "=>"+ "data=" + data);
@@ -164,7 +164,7 @@ public abstract class RequestMaker {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 if (tag != null && onPost() != null){
-                    Log.e("response",tag + "=>"+ "url=" + url);
+                    Log.e("response",tag + "=>"+ "url=" + baseUrl + url);
                     HashMap<String,String> map = onPost();
                     Iterator iterator = map.entrySet().iterator();
                     while (iterator.hasNext()){

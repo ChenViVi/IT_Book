@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.chenyuwei.basematerial.activity.BaseActivity;
@@ -37,12 +38,12 @@ public class ReadingActivity extends BaseActivity {
 
             @Override
             protected void onExists(File file) {
-                pdfView.fromFile(file).load();
+                pdfView.fromFile(file).defaultPage(preferences.getInt(String.valueOf(book.getId()),1)).load();
             }
 
             @Override
             public void onFinish(File file) {
-                pdfView.fromFile(file).load();
+                pdfView.fromFile(file).defaultPage(preferences.getInt(String.valueOf(book.getId()),1)).load();
             }
 
             @Override
@@ -66,5 +67,11 @@ public class ReadingActivity extends BaseActivity {
             return true ;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        preferences.edit().putInt(String.valueOf(book.getId()), pdfView.getCurrentPage() + 1).apply();
     }
 }

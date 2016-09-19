@@ -1,13 +1,15 @@
-package com.chenyuwei.itbook.activity;
+package com.chenyuwei.itbook.fragment;
+
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.chenyuwei.basematerial.activity.BaseRecyclerViewActivity;
-import com.chenyuwei.basematerial.adapter.BaseRecyclerViewAdapter;
+import com.chenyuwei.basematerial.fragment.BaseFragment;
+import com.chenyuwei.basematerial.fragment.BaseListViewFragment;
+import com.chenyuwei.basematerial.fragment.BaseRecyclerViewFragment;
 import com.chenyuwei.basematerial.network.RequestMaker;
+import com.chenyuwei.itbook.R;
 import com.chenyuwei.itbook.adapter.BookAdapter;
 import com.chenyuwei.itbook.modle.Book;
 import com.google.gson.Gson;
@@ -16,14 +18,14 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 /**
- * Created by vivi on 2016/9/11.
+ * Created by vivi on 2016/9/3.
  */
-public class ShelfActivity extends BaseRecyclerViewActivity<Book,BookAdapter> {
+public class RecommendFragment extends BaseRecyclerViewFragment<Book,BookAdapter> {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new RequestMaker(activity, RequestMaker.Method.GET,"get_user_collection"+"?id="+ preferences.getInt("id",-1)) {
+        new RequestMaker(activity, RequestMaker.Method.GET,"query_recommend") {
             @Override
             protected void onSuccess(String response) {
                 Gson gson = new Gson();
