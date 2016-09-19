@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">IT Book</string>
+
+    <string name="fragment_login">登录</string>
+    <string name="fragment_register">注册</string>
+
+    <string name="edit_name">用户名</string>
+    <string name="edit_phone">手机号</string>
+    <string name="edit_password">密码</string>
+
+    <string name="btn_login">登录</string>
+    <string name="btn_register">注册</string>
+
+    <string name="tv_shelf">我的书架</string>
+</resources>
+
+
