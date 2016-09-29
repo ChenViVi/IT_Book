@@ -2,6 +2,8 @@ package com.chenyuwei.itbook.activity;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
+import android.view.View;
 
 import com.chenyuwei.basematerial.activity.BaseTabTopActivity;
 import com.chenyuwei.basematerial.fragment.BaseDrawerFragment;
@@ -19,6 +21,7 @@ public class MainActivity extends BaseTabTopActivity {
 
 
     private BaseDrawerFragment drawerFragment;
+    private SearchView svBook;
 
     @Override
     protected int onBindView() {
@@ -28,7 +31,7 @@ public class MainActivity extends BaseTabTopActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        svBook = (SearchView) findViewById(R.id.svBook);
         drawerFragment = (BaseDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
         addFragment(new RecommendFragment(),"推荐");
@@ -44,5 +47,24 @@ public class MainActivity extends BaseTabTopActivity {
                 }
             }
         };
+        svBook.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        toolbar.setFocusable(true);
+        toolbar.setFocusableInTouchMode(true);
+        toolbar.requestFocus();
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.chenyuwei.basematerial.activity.BaseRecyclerViewActivity;
 import com.chenyuwei.basematerial.adapter.BaseRecyclerViewAdapter;
@@ -64,6 +65,15 @@ public class CategoryActivity extends BaseRecyclerViewActivity<Book,BookAdapter>
     public void onLoadMore() {
         super.onLoadMore();
         requestBookList(data.size(),10);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            finish();
+            return true ;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void requestBookList(final int start_pos,final int list_num){

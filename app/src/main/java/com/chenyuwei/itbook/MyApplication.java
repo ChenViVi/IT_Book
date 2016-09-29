@@ -12,6 +12,6 @@ public class MyApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        RequestMaker.setBaseUrl("http://123.206.16.78/index.php/Home/Request/");
+        RequestMaker.setBaseUrl("http://115.159.73.69/index.php/Home/Request/");
     }
 }

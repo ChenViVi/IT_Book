@@ -1,15 +1,18 @@
 package com.chenyuwei.itbook.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.chenyuwei.basematerial.adapter.BaseRecyclerViewAdapter;
 import com.chenyuwei.basematerial.fragment.BaseFragment;
 import com.chenyuwei.basematerial.fragment.BaseListViewFragment;
 import com.chenyuwei.basematerial.fragment.BaseRecyclerViewFragment;
 import com.chenyuwei.basematerial.network.RequestMaker;
 import com.chenyuwei.itbook.R;
+import com.chenyuwei.itbook.activity.BookDetailActivity;
 import com.chenyuwei.itbook.adapter.BookAdapter;
 import com.chenyuwei.itbook.modle.Book;
 import com.google.gson.Gson;
@@ -25,7 +28,7 @@ public class RecommendFragment extends BaseRecyclerViewFragment<Book,BookAdapter
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new RequestMaker(activity, RequestMaker.Method.GET,"query_recommend") {
+        new RequestMaker(activity, RequestMaker.Method.GET,"query_recommend","query_recommend") {
             @Override
             protected void onSuccess(String response) {
                 Gson gson = new Gson();
@@ -40,6 +43,16 @@ public class RecommendFragment extends BaseRecyclerViewFragment<Book,BookAdapter
                 stopLoadMore();
             }
         };
+        setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener<Book>() {
+            @Override
+            public void onItemClick(int position, Book book) {
+                Intent intent = new Intent(activity,BookDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("book", book);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -6,21 +6,21 @@ package com.chenyuwei.loadimageview;
  */
 public class Options {
     private int failedRes;
-    private Options.Shape shape;
+    private Shape shape;
 
     public Options() {
         this.failedRes = R.drawable.img_default;
-        this.shape = Options.Shape.DEFAULT;
+        this.shape = Shape.DEFAULT;
     }
 
-    public Options(Options.Builder builder) {
+    public Options(Builder builder) {
         this.failedRes = R.drawable.img_default;
-        this.shape = Options.Shape.DEFAULT;
+        this.shape = Shape.DEFAULT;
         this.failedRes = builder.failedRes;
         this.shape = builder.shape;
     }
 
-    public void setShape(Options.Shape shape) {
+    public void setShape(Shape shape) {
         this.shape = shape;
     }
 
@@ -32,25 +32,25 @@ public class Options {
         return this.failedRes;
     }
 
-    public Options.Shape getShape() {
+    public Shape getShape() {
         return this.shape;
     }
 
     public static class Builder {
         private int failedRes;
-        private Options.Shape shape;
+        private Shape shape;
 
         public Builder() {
             this.failedRes = R.drawable.img_default;
-            this.shape = Options.Shape.DEFAULT;
+            this.shape = Shape.DEFAULT;
         }
 
-        public Options.Builder setFailedRes(int failedRes) {
+        public Builder setFailedRes(int failedRes) {
             this.failedRes = failedRes;
             return this;
         }
 
-        public Options.Builder setShape(Options.Shape shape) {
+        public Builder setShape(Shape shape) {
             this.shape = shape;
             return this;
         }
