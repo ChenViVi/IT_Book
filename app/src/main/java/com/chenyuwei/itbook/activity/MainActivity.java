@@ -21,7 +21,6 @@ public class MainActivity extends BaseTabTopActivity {
 
 
     private BaseDrawerFragment drawerFragment;
-    private SearchView svBook;
 
     @Override
     protected int onBindView() {
@@ -31,7 +30,7 @@ public class MainActivity extends BaseTabTopActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        svBook = (SearchView) findViewById(R.id.svBook);
+
         drawerFragment = (BaseDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
         addFragment(new RecommendFragment(),"推荐");
@@ -47,17 +46,6 @@ public class MainActivity extends BaseTabTopActivity {
                 }
             }
         };
-        svBook.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
     }
 
     @Override
